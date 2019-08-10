@@ -1,4 +1,4 @@
-const handleSignin = (req, res, db, bcrypt)  => {//dependences injection
+const handleSignup = (req, res, db, bcrypt)  => {//dependences injection
     const {email, name, password} = req.body;
 
     /*const passwordd = bcrypt.genSalt(saltRounds, function(err, salt) {
