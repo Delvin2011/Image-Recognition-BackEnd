@@ -1,0 +1,89 @@
+1. Node js
+ - Node.js is an open source server environment.
+ - Node.js allows you to run JavaScript on the server.
+ - node -v to check the version number
+ - Johnny-Five - (Use Javascript for building robots, e.g. Arduino)
+ - Does not have Windows, provided by browsers. Rather have global - set of instrustions/objects/property and methods we can use.
+ - Process.exit() to exit the terminal
+ - A server is a computer designed to process requests and deliver data to another computer over the internet or a local network.
+
+2. What Can Node.js Do?
+ - Node.js can generate dynamic page content
+ - Node.js can create, open, read, write, delete, and close files on the server
+ - Node.js can collect form data
+ - Node.js can add, delete, modify data in your database
+
+3. Before Node.js, browsers only could run Javascript. They had the V8 engine.
+
+4. http://johnny-five.io/ - Can be used to write functions that can be run on robots
+ - (Use Javascript for building robots, e.g. Arduino)
+
+5. node global - get all the properties and methods that we can use.
+ - process.exit() - used to exit
+ - to create new file, use New-Item. e.g New-Item script2.js 
+ - node script.js to run a file
+ - const script2 = require('./script2'); - used to import variable from another file (have export the object) using objects
+ - setTimeout - function to be executed after specific time.
+
+6. Types of Node.js Modules
+ - fs Module (file system) console.log(require('fs').readfile) - Outputs contents of the file e.g text file
+ - http module (comes with node) - Used for building servers.
+ - npm - npm init -y install the node packages and yes to any prompts beforehand
+ -  npm init (to install the json package) npm install nodemon --save-dev - install into the devDependencies - constantly watches for changes and run script.js whenever changes are made.
+
+7. Creating a server
+ - "start": "nodemon server.js", inorder for nodemom to listen to server.js in package.json.
+ - npm start & nodemon will listen to server.js
+ - Servers can provide various functionalities, often called "services", such as sharing data or resources among multiple clients, or performing computation for a client.
+ - A single server can serve multiple clients, and a single client can use multiple servers.
+ - After creating the server, the server listen for request from the client.
+
+8. Express.js
+ - web application framework for Node.js.
+ - Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+ - The framework make using Node a lot easier.
+ - If using the server for a form that gets submitted,  use z-www-form-urlencoded
+
+8.1 Express middleware
+ - app.use  - generic express middleware
+ - to use request.body - use body-parser
+
+9. https://2018.stateofjs.com/introduction/ - Ratings of Javascript frameworks
+
+10. Postman
+ - https://www.getpostman.com/
+ - Best way to test the server before implementation.
+ - With express in order to access the body, you need to install package body-parser. npm install body-parser.
+ - Best way to test the server before connecting to front end.
+
+11. RESTful API 
+ - Defines a set of functions which developers can perfom request and receive responses via http protocol.
+ - get, post (Creates a resourse), put (updating or changing a resource), delete (remove a resource).
+ - Has agreed upon set of rules.
+ - Way to define a server.
+ - are stateless. Calls can be made indepently of one another. 
+ - http://localhost:3000/?name=Takudzwa&age=27 => ? means its a query
+
+ 12. Req.header
+ - Just a heads up that in the next lecture I am using req.header inside of a console.log to retrieve the header data in a GET route. 
+ - Depending on which version of express.js you use, (a more recent version has changed the syntax) it now is req.headers. req.header will only return the function declaration.
+
+ 13. User Password
+ - bcrypt-nodejs - Create a very secure login - https://www.npmjs.com/package/bcrypt
+ - the password is sent as a post method, so that the password is part of the body.
+ - A harsh function, takes a string and jumbles it up in a way that noone knows what the password is.
+
+ 14. Cors npm
+- CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources (e.g. fonts) on a web page to be requested from another domain outside the domain from which the first resource was served.
+- npm install cors
+
+15. Knex.js
+- Knex.js is a "batteries included" SQL query builder for Postgres, MSSQL, MySQL, MariaDB, SQLite3, Oracle, and Amazon Redshift 
+- npm install knex
+- The primary target environment for Knex is Node.js, you will need to install the knex library, and then install the appropriate database library:
+- pg for PostgreSQL (npm install pg) and Amazon Redshift, mysql for MySQL or MariaDB, sqlite3 for SQLite3, or mssql for MSSQL.
+- ALTER USER postgres PASSWORD '1234'; (Change server password)
+
+16. Transactions
+- Transactions are an important feature of relational databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. 
