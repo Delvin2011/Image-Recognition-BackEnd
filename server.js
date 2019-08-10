@@ -61,7 +61,7 @@ const database = {
 }
 
 app.get('/',(req, res) => {//how to do a get request in Express (localhost:3000/ - Doind a get request to the root)
-    res.send(database.users); 
+    res.send("It is working!"); 
 });
 
 
