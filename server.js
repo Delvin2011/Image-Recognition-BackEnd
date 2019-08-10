@@ -6,7 +6,9 @@ const saltRounds = 10;
 const knex = require('knex');
 
 const signin = require('./controllers/signin');
+const signup = require('./controllers/signup');
 const image = require('./controllers/image');
+const profile = require('./controllers/profile');
 
 
 const db = knex({
@@ -63,61 +65,9 @@ app.get('/',(req, res) => {//how to do a get request in Express (localhost:3000/
 });
 
 
-app.post('/signin',(req, res) => {signin.handleSignin(req, res, db, bcrypt) })
-
-app.post('/signup', (req, res) => {
-    const {email, name, password} = req.body;
-
-    /*const passwordd = bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
-            console.log(hash);
-        });
-    });*/
-    if(!email || !name || !password){
-        return res.status(400).json('incorrect form sumission');
-    }
-    const hash = bcrypt.hashSync(password,saltRounds);
-    console.log(hash);
-    db.transaction(trx => //create a transact when you want to do more than 2 things at once
-        {
-            trx.insert({
-                hash: hash,
-                email: email
-            })
-            .into('login')
-            .returning('email')
-            .then(loginEmail => {
-                return trx('users')
-                .returning('*')
-                .insert({
-                    email: loginEmail[0],
-                    name: name,
-                    joined: new Date()
-                })
-                .then(user => {
-                    res.json(user[0])
-            })
-        })
-        .then(trx.commit)// for the entries to be added into the users tables from login
-        .catch(trx.rollback)
-    })
-    .catch(err => res.status(400).json('Unable to register'))
-})
-
-app.get('/profile/:id',(req, res) => {
-    const {id} = req.params;
-    db.select().table('users').where({id})
-    .then(user => {
-        if(user.length){
-            res.json(user[0]);
-        }
-        else{
-            res.status(400).json('Not found')
-        }
-    })
-    .catch(err => res.status(400).json('Error getting user'))      
-});
-
+app.post('/signin',(req, res) => {signin.handleSignin(req, res, db, bcrypt)})
+app.post('/signup',(req, res) => {signup.handleSignup(req, res, db, bcrypt)})
+app.get('/profile/:id',(req, res) => {profile.handleProfile(req, res, db)})
 app.put('/image',(req, res) => {image.handleImage(req, res, db) });
 app.post('/imageurl',(req, res) => {image.handleApiCall(req, res) });
 
@@ -127,7 +77,7 @@ app.listen(3000);
 
 /*
 -/signin --> POST = success/fail
--/register --> POST = user
+-/signup --> POST = user
 -/profile/:userId --> GET = user
 -/image --> PUT --> user
 */

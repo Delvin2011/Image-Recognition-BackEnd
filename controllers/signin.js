@@ -22,9 +22,6 @@ const {email, password} = req.body;
                    
             })
             .catch(err => res.status(400).json('Wrong Credentials'))
-
-
-
     /*if(req.body.email === database.users[0].email && req.body.password === database.users[0].password)
         { res.json(database.users[0]); 
             console.log(database.users[0])}
