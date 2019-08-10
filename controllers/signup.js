@@ -1,3 +1,4 @@
+const saltRounds = 10;
 const handleSignup = (req, res, db, bcrypt)  => {//dependences injection
     const {email, name, password} = req.body;
 
@@ -7,7 +8,7 @@ const handleSignup = (req, res, db, bcrypt)  => {//dependences injection
         });
     });*/
     if(!email || !name || !password){
-        return res.status(400).json('incorrect form sumission');
+        return res.status(400).json('incorrect form submission');
     }
     const hash = bcrypt.hashSync(password,saltRounds);
     console.log(hash);
