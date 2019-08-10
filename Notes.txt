@@ -87,3 +87,10 @@
 
 16. Transactions
 - Transactions are an important feature of relational databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. 
+
+17. Deployment
+ - Heroku create - To create the app
+ - Heroku open - 
+ - git remote -v - command to confirm that a remote named heroku has been set for your app:
+ - heroku logs --tail
+ - Heroku has its own port, not 3000.
