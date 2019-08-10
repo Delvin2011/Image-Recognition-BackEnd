@@ -29,6 +29,7 @@ const app = express();
 //app.use(express.static(__dirname + '/public')) //a server that serves simple static assets.
 app.use(bodyParse.json());
 app.use(cors());
+app.options('*', cors()); 
 
 const database = {
     users: [
