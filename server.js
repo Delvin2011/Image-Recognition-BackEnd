@@ -13,7 +13,7 @@ const profile = require('./controllers/profile');
 const db = knex({
     client: 'pg',//for postgres
     connection: {
-      host : '127.0.0.1', //(localhost address) for a hosted plartform, we would insert where our data base is hosted
+      host : 'postgresql-clear-81991', //(Heroku address) for a hosted plartform, we would insert where our data base is hosted
       user : 'postgres',
       password : '1234',
       database : 'smartbrain'
