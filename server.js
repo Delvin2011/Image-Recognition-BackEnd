@@ -17,7 +17,8 @@ const db = knex({
         ssl: true
     }
   });
-
+  console.log(process.env.DATABASE_URL);
+  console.log(process.env.PORT);
 
 
   db.select().table('login').then(data =>{
