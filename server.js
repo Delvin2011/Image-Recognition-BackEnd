@@ -32,8 +32,7 @@ app.options('*', cors());
 
 app.get('/',(req, res) => {//how to do a get request in Express (localhost:3000/ - Doind a get request to the root)
     res.send(process.env.DATABASE_URL); 
-    console.log(process.env.DATABASE_URL);
-    console.log(process.env.PORT);
+    res.send(process.env.PORT);
 });
 
 
