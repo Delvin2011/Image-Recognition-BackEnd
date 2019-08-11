@@ -88,9 +88,16 @@
 16. Transactions
 - Transactions are an important feature of relational databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. 
 
+18. GitHub
+ - git add (to add or update file)
+ - git commit -m"" (save changes to the local repository with comments)
+ - git push upload loac repository content to remote repository)
+ - git pull (update the local repository with the remote repository)
+
 17. Deployment
  - Heroku create - To create the app
  - Heroku open - 
+ - git push heroku master - update Heroku repository
  - git remote -v - command to confirm that a remote named heroku has been set for your app:
  - heroku logs --tail
  - Heroku has its own port, not 3000.
