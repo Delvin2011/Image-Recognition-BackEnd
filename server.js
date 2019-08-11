@@ -10,26 +10,14 @@ const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
 
-/*const db = knex({
+const db = knex({
     client: 'pg',//for postgres
     connection: {
         connectionString: process.env.DATABASE_URL,
-        ssl: true,
-      /*host : 'postgresql-clear-81991', //(Heroku address) for a hosted plartform, we would insert where our data base is hosted
-      user : 'postgres',
-      password : '1234',
-      database : 'smartbrain'
+        ssl: true
     }
-  });*/
+  });
 
-  const { Client } = require('pg');
-
-const db = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-
-db.connect();
 
 
   db.select().table('login').then(data =>{
@@ -54,7 +42,7 @@ app.put('/image',(req, res) => {image.handleImage(req, res, db) });
 app.post('/imageurl',(req, res) => {image.handleApiCall(req, res) });
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5432);
 
 
 /*
