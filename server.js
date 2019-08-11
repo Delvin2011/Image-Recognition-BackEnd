@@ -10,7 +10,7 @@ const image = require('./controllers/image');
 const profile = require('./controllers/profile');
 
 
-const db = knex({
+/*const db = knex({
     client: 'pg',//for postgres
     connection: {
         connectionString: process.env.DATABASE_URL,
@@ -18,9 +18,19 @@ const db = knex({
       /*host : 'postgresql-clear-81991', //(Heroku address) for a hosted plartform, we would insert where our data base is hosted
       user : 'postgres',
       password : '1234',
-      database : 'smartbrain'*/
+      database : 'smartbrain'
     }
-  });
+  });*/
+
+  const { Client } = require('pg');
+
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+db.connect();
+
 
   db.select().table('login').then(data =>{
     //console.log(data);
@@ -31,36 +41,6 @@ const app = express();
 app.use(bodyParse.json());
 app.use(cors());
 app.options('*', cors()); 
-
-const database = {
-    users: [
-        {
-            id:'123',
-            name:'Takudzwa',
-            email:'takutapfu@gmail.com',
-            password:'Delvin',
-            entries: 0,
-            Joined: new Date()
-        },
-       
-        {
-            id:'124',
-            name:'Rudo',
-            email:'rwdzviti@gmail.com',
-            password:'Rudo',
-            entries: 0,
-            Joined: new Date()
-        }        
-    ],
-
-    login: [
-        {
-            id: '987',
-            hash:'',
-            email: ''
-        }
-    ]
-}
 
 app.get('/',(req, res) => {//how to do a get request in Express (localhost:3000/ - Doind a get request to the root)
     res.send("It is working!"); 
