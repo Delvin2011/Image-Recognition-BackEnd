@@ -1,3 +1,5 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
 const express = require('express');
 const bodyParse = require('body-parser'); //
 const cors = require('cors')
@@ -43,7 +45,7 @@ app.put('/image',(req, res) => {image.handleImage(req, res, db) });
 app.post('/imageurl',(req, res) => {image.handleApiCall(req, res) });
 
 
-app.listen(process.env.PORT || 5432);
+app.listen(process.env.PORT || 3000);
 
 
 /*
