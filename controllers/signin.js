@@ -4,7 +4,7 @@ const {email, password} = req.body;
  if(!email || !password){
     return res.status(400).json('incorrect form sumission');
 }
-    db.select('email', 'hash').from('login')
+    db.select('email', 'hash').from('logins')
         .where('email','=',req.body.email)
         .then(data => 
             { const isValid = bcrypt.compareSync(req.body.password, data[0].hash);

@@ -88,16 +88,34 @@
 16. Transactions
 - Transactions are an important feature of relational databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. 
 
-18. GitHub
+17. GitHub
  - git add (to add or update file)
  - git commit -m"" (save changes to the local repository with comments)
  - git push upload loac repository content to remote repository)
  - git pull (update the local repository with the remote repository)
+ - git status (command displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git)
 
-17. Deployment
+18. Deployment
+ - heroku login on CMD terminal
  - Heroku create - To create the app
  - Heroku open - 
  - git push heroku master - update Heroku repository
  - git remote -v - command to confirm that a remote named heroku has been set for your app:
  - heroku logs --tail
  - Heroku has its own port, not 3000.
+
+ 19. database
+ - https://devcenter.heroku.com/articles/heroku-postgresql
+ - heroku addons
+ - heroku addons:create heroku-postgresql:hobby-dev - to provision Heroku Postgres
+ - heroku pg:info - (o see all PostgreSQL databases provisioned by your application and the identifying characteristics of each (such as database size, status, number of tables, and PG version))
+ - heroku pg:psql - To establish a psql session with your remote database
+ - psql is the native PostgreSQL interactive terminal and is used to execute queries and issue commands to the connected database.
+ - Copy queries from local database and paste.
+ - use command \d to check if the tables have been created.
+ - \q exit the database
+ - run heroku addons, to get the database URL
+ - git push heroku master - to depoly the new changes
+ - Connecting in Node.js - connect to process.env.DATABASE_URL when your app initializes.
+ - heroku config - to view the postgres URL
+ - npm install dotenv
