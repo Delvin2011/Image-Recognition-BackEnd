@@ -18,7 +18,7 @@ const handleSignup = (req, res, db, bcrypt)  => {//dependences injection
                 hash: hash,
                 email: email
             })
-            .into('login')
+            .into('logins')
             .returning('email')
             .then(loginEmail => {
                 console.log('here2');
