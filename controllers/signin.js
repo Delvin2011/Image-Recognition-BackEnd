@@ -1,5 +1,4 @@
-const handleSignin = (req, res, db, bcrypt)  => {//dependences injection
- //signin route
+const handleSignin = (req, res, db, bcrypt)  => {
 const {email, password} = req.body;
  if(!email || !password){
     return res.status(400).json('incorrect form sumission');
@@ -22,11 +21,6 @@ const {email, password} = req.body;
                    
             })
             .catch(err => res.status(400).json('Wrong Credentials'))
-    /*if(req.body.email === database.users[0].email && req.body.password === database.users[0].password)
-        { res.json(database.users[0]); 
-            console.log(database.users[0])}
-    else
-        { res.status(400).json('error loggin in'); }*/
 };
 
 module.exports = {
